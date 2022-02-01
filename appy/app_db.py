@@ -1,8 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from app import APP
 
-DB = SQLAlchemy(APP)
-DB.init_app(APP)
+DB = SQLAlchemy()
 
 class Project(DB.Model):
     """SQLA table for Project info"""

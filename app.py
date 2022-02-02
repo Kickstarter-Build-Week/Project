@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
-from app_db import DB, Project
+from .app_db import DB, Project
+from os import getenv
 
 # app instantiation
 APP = Flask(__name__)
 # configuring to database
-APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+APP.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Connect our database to the app object

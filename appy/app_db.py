@@ -17,4 +17,4 @@ class Project(DB.Model):
     # how long to reach goal (campaign length)
     duration = DB.Column(DB.BigInteger, nullable=False)
     # description of product/service
-    description = DB.Column(DB.String, nullable=True)
+    description = DB.Column(DB.String(1000), nullable=True)

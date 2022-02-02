@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request
-from .app_db import DB
-from .predict import *
-
+from .app_db import DB, Project
 
 # app instantiation
 APP = Flask(__name__)
@@ -9,11 +7,13 @@ APP = Flask(__name__)
 APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Connect our database to the app object
+DB.init_app(APP)
 
 # this is a functino to create app
 def flask_app():
     '''This app creates our application'''
-    
+
     # creating db model around app
     DB.init_app(APP)
 

@@ -1,1 +1,1 @@
-web: gunicorn --chdir appy app:app --preload --workers 1
+web: gunicorn appy:app --preload --workers 1

@@ -17,17 +17,17 @@ def flask_app():
     # creating db model around app
     DB.init_app(APP)
 
-    # home route
+    # -----HOME ROUTE------
     @APP.route('/')
     def Home_page():
         '''Landing page to the Kickstarter Prediction project'''
-    
+
         return render_template('landing.html', title='Home')
 
     def df_creator():
         '''creates table from inputted user data'''
     
-    # for resetting db of inputted user data
+    # -----RESET DB------
     @APP.route('/reset')
     def reset():
         # empty db
@@ -38,3 +38,15 @@ def flask_app():
         return render_template('landing.html', title='database has been reset')
     
     return APP
+
+def data_retrieval():
+    # database objects
+    projects = Project.query.all()
+    # list of individual kickstarters
+    kickstarters = []
+    # iterating over every project
+    for project in projects:
+        # filling empty list
+        kickstarters.append(project.name)
+        # return full list
+    return kickstarters

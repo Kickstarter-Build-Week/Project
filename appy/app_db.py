@@ -8,13 +8,15 @@ class Project(DB.Model):
     id = DB.Column(DB.BigInteger, primary_key=True)
     # name column
     name = DB.Column(DB.String, nullable=False)
+    # description of product/service
+    description = DB.Column(DB.String(1000), nullable=True)
     # amount the kickstarter aims to reach
     goal = DB.Column(DB.BigInteger, nullable=False)
     # sub category of product/service
     category = DB.Column(DB.String, nullable=False)
-    # main category of product/service
-    Topic = DB.Column(DB.String, nullable=False)
     # how long to reach goal (campaign length)
     duration = DB.Column(DB.BigInteger, nullable=False)
-    # description of product/service
-    description = DB.Column(DB.String(1000), nullable=True)
+    
+
+    def __repr__(self):
+        return "<Project: {}>".format(self.name)

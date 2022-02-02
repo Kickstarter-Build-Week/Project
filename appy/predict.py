@@ -15,6 +15,6 @@ category = ['Academic', 'Places', 'Blues', 'Restaurants', 'Webseries',
        'Experimental', 'Comedy', 'Wearables', 'Sound', 'Software',
        'Robots', 'Makerspaces']
 
-def create_project(df):
+def create_project(name, blurb, goal, category, length):
     ks = pd.DataFrame(columns = ['name', 'blurb', 'goal','category', 'length'])
-    # ks.loc[len(df.index)] = [name, blurb, goal, category, length]
+    ks.loc[len(ks.index)] = [name, blurb, goal, category, length]

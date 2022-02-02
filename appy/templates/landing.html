@@ -6,13 +6,14 @@
 -->
 <html>
 	<head>
-		<title>Kickstarter Prediction Project</title>
+		<title>
 			<div>
-				<h1>Kickstarter Success Predictor</h1>
+				<h1>Welcome to the Kickstarter Success Predictor</h1>
 			</div>
-		<div>
-			<p>By Isaac Zarspada, Andres Viduarre, Jonathan Mcgraw and Austin Wolff</p>
-		</div>
+			<div>
+				<p>By Isaac Zarspada, Andres Viduarre, Jonathan Mcgraw and Austin Wolff</p>
+			</div>
+		</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -26,7 +27,6 @@
 				<!-- Header -->
 				<!-- Note: The "styleN" class below should match that of the banner element. -->
 					<header id="header" class="alt style2">
-						<a href="index.html" class="logo"><strong>forty</strong> <span>by HTML5 UP</span></a>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -35,14 +35,9 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
 							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
+							<li><a href="prediction.html">Prediction</a></li>
+							<!-- <li><a href="elements.html">Elements</a></li> -->
 						</ul>
 					</nav>
 
@@ -62,104 +57,72 @@
 						</div>
 					</section>
 
-				<!-- Main -->
-					<div id="main">
-
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h2>Sed amet aliquam</h2>
-									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</p>
-								</div>
-							</section>
-
-						<!-- Two -->
-							<section id="two" class="spotlights">
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/porch.jpg" alt="" data-position="center center" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Orci maecenas</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/desk.jpg" alt="" data-position="top center" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Rhoncus magna</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/livingroom.jpg" alt="" data-position="25% 25%" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Sed nunc ligula</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</section>
-
-						<!-- Three -->
-							<section id="three">
-								<div class="inner">
-									<header class="major">
-										<h2>Massa libero</h2>
-									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button next">Get Started</a></li>
-									</ul>
-								</div>
-							</section>
-
-					</div>
-
-				<!-- Contact -->
+				<!-- User Data -->
 					<section id="contact">
 						<div class="inner">
 							<section>
 								<form method="post" action="#">
 									<div class="fields">
+										<!-- Project name -->
 										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
+											<label for="name">Project Name:</label>
+												<div>
+													<input type="text" name="name" id="name" />
+												</div>
 										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
+										<!-- Project Description -->
 										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="6"></textarea>
+											<label for="blurb">Project Description:</label>
+												<div>
+													<textarea name="blurb" id="blurb" rows="3"></textarea>
+												</div>
 										</div>
+										<!-- GOAL -->
+										<div class="field half">
+											<label for="goal">Goal:</label>
+												<div>
+													<input type="integer" name="goal" id="goal" />
+												</div>
+										</div>
+										<!-- Category -->
+										<div>
+											<label for="category">Choose a Category:</label>
+												<div>
+													<select name="category" id="category">
+														<option value="Academic">Academic</option>
+														<option value="Places">Places</option>
+														<option value="Blues">Blues</option>
+														<option value="Restaurants">Restaurants</option>
+														<option value="Webseries">Webseries</option>
+														<option value="Thrillers">Thrillers</option>
+														<option value="Shorts">Shorts</option>
+														<option value="Web">Web</option>
+														<option value="Apps">Apps</option>
+														<option value="Gadgets">Gadgets</option>
+														<option value="Hardware">Hardware</option>
+														<option value="Festivals">Festivals</option>
+														<option value="Plays">Plays</option>
+														<option value="Musical">Musical</option>
+														<option value="Flight">Flight</option>
+														<option value="Spaces">Spaces</option>
+														<option value="Immersive">Immersive</option>
+														<option value="Experimental">Experimental</option>
+														<option value="Comedy">Comedy</option>
+														<option value="Wearables">Wearables</option>
+														<option value="Sound">Sound</option>
+														<option value="Software">Software</option>
+														<option value="Robots">Robots</option>
+														<option value="Makerspaces">Makerspaces</option>
+													</select>
+												</div>
+										</div>
+										<!-- Campaign length -->
+											<div class="field half">
+												<label for="length">Campaign Length</label>
+													<div>
+														<input type="Float" name="length" id="length" />
+													</div>
+											</div>
 									</div>
 									<ul class="actions">
 										<li><input type="submit" value="Send Message" class="primary" /></li>
@@ -167,34 +130,8 @@
 									</ul>
 								</form>
 							</section>
-							<section class="split">
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-envelope"></span>
-										<h3>Email</h3>
-										<a href="#">information@untitled.tld</a>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-phone"></span>
-										<h3>Phone</h3>
-										<span>(000) 000-0000 x12387</span>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-home"></span>
-										<h3>Address</h3>
-										<span>1234 Somewhere Road #5432<br />
-										Nashville, TN 00000<br />
-										United States of America</span>
-									</div>
-								</section>
-							</section>
 						</div>
 					</section>
-
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">

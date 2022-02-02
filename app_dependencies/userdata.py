@@ -1,8 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import APP
 
-DB = SQLAlchemy(APP)
-DB.init_app(APP)
+DB = SQLAlchemy()
+
 
 class Project(DB.Model):
     """SQLA table for Project info"""
@@ -19,4 +18,4 @@ class Project(DB.Model):
     # how long to reach goal (campaign length)
     duration = DB.Column(DB.BigInteger, nullable=False)
     # description of product/service
-    description = DB.Column(DB.BigString, nullable=True)
+    description = DB.Column(DB.String(1000), nullable=True)

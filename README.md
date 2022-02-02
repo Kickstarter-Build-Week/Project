@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 <h1 align="center">
-Kickstarter Success Predictor (Using A GRU Neural Network)
+Kickstarter Success Predictor <br>(Using A GRU Neural Network)
 </h1>
 
 <p align="center">

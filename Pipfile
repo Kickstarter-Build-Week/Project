@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-click = "==7.1.2"
 Flask = "==1.1.2"
 Flask-SQLAlchemy = "==2.5.1"
 Jinja2 = "==2.11.3"

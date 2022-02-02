@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from .app_db import DB, Project
+from app_db import DB, Project
 
 # app instantiation
 APP = Flask(__name__)

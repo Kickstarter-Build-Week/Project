@@ -5,7 +5,7 @@ Kickstarter Success Predictor <br>(Using A GRU Neural Network)
 </h1>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/CONTRIBUTORS-3-green?style=for-the-badge"/><a href="https://github.com/Build-Week-Dec-21-Spotify-2/Build-Week-Dec-21-Spotify-2/graphs/contributors"></a>
+    <img src="https://img.shields.io/badge/CONTRIBUTORS-4-green?style=for-the-badge"/><a href="https://github.com/Build-Week-Dec-21-Spotify-2/Build-Week-Dec-21-Spotify-2/graphs/contributors"></a>
     <img src="https://img.shields.io/badge/LICENSE-MIT-green?style=for-the-badge"/><a href="https://github.com/Build-Week-Dec-21-Spotify-2/Build-Week-Dec-21-Spotify-2/blob/main/LICENSE"></a>
 </p>
 

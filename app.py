@@ -1,15 +1,41 @@
 from flask import Flask, render_template, request
-from .app_db import DB, Project
+#from .app_db import DB, Project
 from os import getenv
+from flask_sqlalchemy import SQLAlchemy
 
 # app instantiation
+#APP = flask_app()
 APP = Flask(__name__)
-# configuring to database
-APP.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
-APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# app_db
+DB = SQLAlchemy()
 
 # Connect our database to the app object
 DB.init_app(APP)
+
+class Project(DB.Model):
+    """SQLA table for Project info"""
+    # unique id for project obj
+    id = DB.Column(DB.BigInteger, primary_key=True)
+    # name column
+    name = DB.Column(DB.String, nullable=False)
+    # description of product/service
+    description = DB.Column(DB.String(1000), nullable=True)
+    # amount the kickstarter aims to reach
+    goal = DB.Column(DB.BigInteger, nullable=False)
+    # sub category of product/service
+    category = DB.Column(DB.String, nullable=False)
+    # how long to reach goal (campaign length)
+    duration = DB.Column(DB.BigInteger, nullable=False)
+    
+
+    def __repr__(self):
+        return "<Project: {}>".format(self.name)
+
+
+# configuring to database
+APP.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
+APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # this is a functino to create app
 def flask_app():
@@ -39,6 +65,8 @@ def flask_app():
         return render_template('landing.html', title='database has been reset')
     
     return APP
+
+APP = flask_app()
 
 def data_retrieval():
     # database objects

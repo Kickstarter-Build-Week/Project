@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from app_dependencies.userdata import DB, Project
+from .app_dependencies.userdata import DB, Project
 # app instantiation
 APP = Flask(__name__)
 
@@ -7,7 +7,8 @@ APP = Flask(__name__)
 APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# connecting app to database
+# Connect our database to the app object
+DB.init_app(APP)
 
 # this is a functino to create app
 def flask_app():

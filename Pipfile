@@ -8,17 +8,13 @@ click = "==7.1.2"
 Flask = "==1.1.2"
 Flask-SQLAlchemy = "==2.5.1"
 Jinja2 = "==2.11.3"
-MarkupSafe = "==1.1.1"
 SQLAlchemy = "==1.4.5"
 numpy = "==1.21"
 pandas = "==1.4.0"
-seaborn = "==0.11.2"
-matplotlib = "==3.5.1"
-scikit-learn = "==1.0.2"
 ipykernel = "*"
 xgboost = "*"
-graphviz = "*"
 shap = "*"
+gunicorn = "*"
 
 [dev-packages]
 

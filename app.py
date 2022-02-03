@@ -1,18 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from os import getenv
 from flask_sqlalchemy import SQLAlchemy
 import pickle
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 
-#updated all changes to be compatible with last night's repo
+
+
 # app instantiation
 APP = Flask(__name__)
 
 # Load model
 with open("xgb_class_1.pkl", "rb") as f:
     model = pickle.load(f)
-    #X = df[['name_len', 'blurb_len', 'goal', 'launch_to_deadline_days', 'category']]
+    # X = df[['name_len', 'blurb_len', 'goal', 'launch_to_deadline_days', 'category']]
     #y = model.XGboost(df) # Return a 0(predicts fail) or 1(predicts successful)
 
 # app_db
@@ -44,16 +45,6 @@ class Project(DB.Model):
 # configuring to database
 APP.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# goal', 'name_len', 'blurb_len', 'category_academic', 'category_apps',
-#        'category_blues', 'category_comedy', 'category_experimental',
-#        'category_festivals', 'category_flight', 'category_gadgets',
-#        'category_hardware', 'category_immersive', 'category_makerspaces',
-#        'category_musical', 'category_places', 'category_plays',
-#        'category_restaurants', 'category_robots', 'category_shorts',
-#        'category_software', 'category_sound', 'category_spaces',
-#        'category_thrillers', 'category_wearables', 'category_web',
-#        'category_webseries', 'campaign_length_days'
 
 
 def create_project_df(name, blurb, goal, category, length):
@@ -95,8 +86,7 @@ def create_project_df(name, blurb, goal, category, length):
 # this is a function to create app
 def flask_app():
     '''This app creates our application'''
-    # DB.init_app(APP)
-
+    
     # -----HOME ROUTE------
     @APP.route('/')
     def Home_page():
@@ -111,7 +101,6 @@ def flask_app():
         DB.drop_all()
         # recreate tables
         DB.create_all()
-
         return render_template('landing.html', title='database has been reset')
 
     @APP.route('/project', methods= ['GET', 'POST'])
@@ -128,14 +117,16 @@ def flask_app():
                                  category=prj_category,
                                  duration=prj_length)
             ks = create_project_df(prj_name, prj_desc, prj_goal, prj_category, prj_length)
-            success = model.predict(ks)
+            predify = model.predict(ks)
             DB.session.add(db_project)
             DB.session.commit()
-            return render_template('prediction.html', title='Prediction', message=success)
+            return redirect(url_for('prediction.html', pred=predify, project=prj_name))
         else:
-            render_template('forms.html')
-            
-        
+            return render_template('landing.html', title='Resubmit Project')
+    @APP.route('/<project>', methods= ['GET'])       
+    def prediction(project, pred):
+        return f'<h1>The {project} will be a {pred}</h1>'
+    
 
 
     return APP

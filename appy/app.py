@@ -1,28 +1,36 @@
 from hashlib import new
 from flask import Flask, render_template, request
+from os import getenv
 from .app_db import DB, Project
+import pickle
+
 
 # app instantiation
 APP = Flask(__name__)
-# configuring to database
-APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
-APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Load model
+with open("xgb_class_1.pkl", "rb") as f:
+    model = pickle.load(f)
+    #X = df[['name_len', 'blurb_len', 'goal', 'launch_to_deadline_days', 'category']]
+    #y = model.XGboost(df) # Return a 0(predicts fail) or 1(predicts successful)
+
 
 # Connect our database to the app object
 DB.init_app(APP)
 
-# this is a functino to create app
+# configuring to database
+APP.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
+APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# this is a function to create app
 def flask_app():
     '''This app creates our application'''
 
-    # creating db model around app
-    DB.init_app(APP)
 
     # -----HOME ROUTE------
     @APP.route('/')
     def Home_page():
         '''Landing page to the Kickstarter Prediction project'''
-
         return render_template('landing.html', title='Home')
 
     # -----RESET DB------

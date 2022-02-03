@@ -1,6 +1,6 @@
 import pandas as pd
 import pickle
-from app_db import DB, Project
+from .app import DB, Project
 
 
 # xgb_model_loaded = pickle.load(open('xgb_class_1.pkl', "rb"))

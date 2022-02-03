@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 <h1 align="center">
-Kickstarter Success Predictor <br>(Using A GRU Neural Network)
+Kickstarter Success Predictor <br>(Using XGBoost)
 </h1>
 
 <p align="center">
@@ -16,7 +16,7 @@ Kickstarter Success Predictor <br>(Using A GRU Neural Network)
 If you're planning for your first (or next) Kickstarter campaign, you may want to wait a few moments and try this new app. We've created an AI-powered software that can predict whether your new campaign will be successful or not (with up to 81% accuracy). Click on the link below to try it out.
 
 ### Use The App Here:
-URL: [https://predictmykickstarter.herokuapp.com/](https://predictmykickstarter.herokuapp.com/)
+URL: [https://my-kickstarterds34.herokuapp.com/](https://my-kickstarterds34.herokuapp.com/)
 
 Just click on the link above to be taken to the app.
 

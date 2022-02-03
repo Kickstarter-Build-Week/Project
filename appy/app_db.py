@@ -1,7 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 
+
+# database instantiation
 DB = SQLAlchemy()
 
+
+
+# _______PROJECT OBJECT_________
 class Project(DB.Model):
     """SQLA table for Project info"""
     # unique id for project obj

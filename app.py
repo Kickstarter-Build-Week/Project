@@ -124,9 +124,9 @@ def prediction():
     ks = create_project_df(prj_name, prj_desc, prj_goal, prj_category, prj_length)
     predify = model.predict(ks)
     if predify == [0]:
-        pred_result = 'Fail!!'
+        pred_result = 'a failure.'
     if predify == [1]:
-        pred_result = 'You successful bastard' 
+        pred_result = 'successful bastard.' 
     # DB.session.add(db_project)
     # DB.session.commit()
     return render_template('prediction.html',

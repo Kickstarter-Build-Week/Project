@@ -52,8 +52,10 @@
 					</section>
 
 				<!-- User Data -->
+				
 					<section id="contact">
 						<div class="inner">
+							<div class="whatever">
 							<section>
 								<form method="post" action="prediction">
 									<div class="fields">
@@ -127,8 +129,15 @@
 								</form>
 
 							</section>
+						
 						</div>
+						<landing class="container">
+							{% block content %}
+							{% endblock %}	
 					</section>
+
+				</div>
+
 				<!-- Footer -->
 					<footer id="footer">
 
@@ -146,7 +155,4 @@
 			<script src="static/js/main.js"></script>
 
 	</body>
-<landing class="container">
-	{% block content %}
-	{% endblock %}
 </html>

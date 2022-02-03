@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Kickstarter Project</title>
@@ -11,7 +6,7 @@
 				<h1>Welcome to the Kickstarter Success Predictor</h1>
 			</div>
 			<div>
-				<p>By Isaac Zarspada, Andres Vidaurre, Jonathan Mcgraw and Austin Wolff</p>
+				<p>By Isaac Zarspada, Andres Viduarre, Jonathan Mcgraw and Austin Wolff</p>
 			</div>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -30,6 +25,7 @@
 							<a href="#menu">Menu</a>
 						</nav>
 					</header>
+
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
@@ -38,6 +34,7 @@
 							<!-- <li><a href="elements.html">Elements</a></li> -->
 						</ul>
 					</nav>
+
 				<!-- Banner -->
 				<!-- Note: The "styleN" class below should match that of the header element. -->
 					<section id="banner" class="style2" style="background-position: center 0px; background-image: url('static/images/together.jpg');">
@@ -58,14 +55,13 @@
 					<section id="contact">
 						<div class="inner">
 							<section>
-								<!-- forms for project data -->
 								<form method="post" action="#">
 									<div class="fields">
 										<!-- Project name -->
 										<div class="field half">
 											<label for="prj">Project Name:</label>
 												<div>
-													<input type="text" name="prj" id="prj" />
+													<input type="text" name="prj" id="prj" method="post"/>
 												</div>
 										</div>
 										<!-- Project Description -->
@@ -79,7 +75,7 @@
 										<div class="field half">
 											<label for="goal">Goal:</label>
 												<div>
-													<input type="number" name="goal" id="goal" style="font-size:100%;color:#acacac;"/>
+													<input type="integer" name="goal" id="goal" />
 												</div>
 										</div>
 										<!-- Category -->
@@ -118,37 +114,23 @@
 											<div class="field half">
 												<label for="length">Campaign Length</label>
 													<div>
-														<input type="number" name="length" id="length" style="font-size:100%;color:#acacac;"/>
+														<input type="Float" name="length" id="length" />
 													</div>
 											</div>
 									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Clear" /></li>
-									</ul>
 								</form>
-								<!-- end of form submission -->
+								<form action="/prediction" method="post">
+									<input type="submit" value="Submit">
+								</form>
+								<form action="/reset" method="post">
+									<li><input type="reset" value="Clear" /></li> -->
+								</form>
 							</section>
-							<section>
-								
-							</section>
-							<!-- prediction -->
 						</div>
 					</section>
 				<!-- Footer -->
 					<footer id="footer">
-						<div class="inner">
-							<ul class="icons">
-								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
+
 					</footer>
 
 			</div>

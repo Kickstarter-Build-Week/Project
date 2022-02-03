@@ -2,10 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from os import getenv
 from flask_sqlalchemy import SQLAlchemy
 import pickle
-from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
-
-
 
 # app instantiation
 APP = Flask(__name__)
@@ -82,59 +79,6 @@ def create_project_df(name, blurb, goal, category, length):
 
     return ks
 
-
-# this is a function to create app
-def flask_app():
-    '''This app creates our application'''
-    
-    # -----HOME ROUTE------
-    @APP.route('/')
-    def Home_page():
-        '''Landing page to the Kickstarter Prediction project'''
-        return render_template('landing.html', title='Home')
-
-    
-    # -----RESET DB------
-    @APP.route('/reset')
-    def reset():
-        # empty db
-        DB.drop_all()
-        # recreate tables
-        DB.create_all()
-        return render_template('landing.html', title='database has been reset')
-
-    @APP.route('/project', methods= ['GET', 'POST'])
-    def update_project():
-        if request.method == 'POST':
-            render_template('landing.html', title='Home')
-            prj_name = request.form['prj']
-            prj_desc = request.form['blurb']
-            prj_goal = request.form['goal']
-            prj_category = request.form['category']
-            prj_length = request.form['length']
-            db_project = Project(name=prj_name,
-                                 description=prj_desc,
-                                 goal=prj_goal,
-                                 category=prj_category,
-                                 duration=prj_length)
-            ks = create_project_df(prj_name, prj_desc, prj_goal, prj_category, prj_length)
-            predify = model.predict(ks)
-            DB.session.add(db_project)
-            DB.session.commit()
-            return redirect(url_for('prediction', pred=predify, project=prj_name))
-        else:
-            return render_template('landing.html', title='Resubmit Project')
-    @APP.route('/<project>', methods= ['GET'])       
-    def prediction(project, pred):
-        return f'<h1>The {project} will be a {pred}</h1>'
-    
-
-
-    return APP
-
-APP = flask_app()
-
-
 def data_retrieval():
     # database objects
     projects = Project.query.all()
@@ -146,3 +90,40 @@ def data_retrieval():
         kickstarters.append(project.name)
         # return full list
     return kickstarters
+
+'''This app creates our application'''
+
+# -----HOME ROUTE------
+@APP.route('/')
+def Home_page():
+    '''Landing page to the Kickstarter Prediction project'''
+    return render_template('landing.html', title='Home')
+
+
+# -----RESET DB------
+@APP.route('/reset')
+def reset():
+    # empty db
+    DB.drop_all()
+    # recreate tables
+    DB.create_all()
+    return render_template('landing.html', title='database has been reset')
+
+@APP.route('/prediction')#, methods= ["POST"])
+def prediction():
+    #prj_name = request.form['prj']
+    # prj_desc = request.form['blurb']
+    # prj_goal = request.form['goal']
+    # prj_category = request.form['category']
+    # prj_length = request.form['length']
+    # db_project = Project(name=prj_name,
+    #                         description=prj_desc,
+    #                         goal=prj_goal,
+    #                         category=prj_category,
+    #                         duration=prj_length)
+    # ks = create_project_df(prj_name, prj_desc, prj_goal, prj_category, prj_length)
+    # predify = model.predict(ks)
+    # DB.session.add(db_project)
+    # DB.session.commit()
+    #return render_template('prediction.html', title="Prediction")#, project=prj_name)
+    return render_template('prediction.html', title='Prediction')

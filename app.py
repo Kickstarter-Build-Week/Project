@@ -1,11 +1,17 @@
 from flask import Flask, render_template, request
-#from .app_db import DB, Project
 from os import getenv
 from flask_sqlalchemy import SQLAlchemy
+import pickle
 
 # app instantiation
 #APP = flask_app()
 APP = Flask(__name__)
+
+# Load model
+with open("xgb_class_1.pkl", "rb") as f:
+    model = pickle.load(f)
+    #X = df[['name_len', 'blurb_len', 'goal', 'launch_to_deadline_days', 'category']]
+    #y = model.XGboost(df) # Return a 0(predicts fail) or 1(predicts successful)
 
 # app_db
 DB = SQLAlchemy()

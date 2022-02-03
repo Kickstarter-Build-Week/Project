@@ -5,6 +5,7 @@ import pickle
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 
+#updated all changes to be compatible with last night's repo
 # app instantiation
 APP = Flask(__name__)
 

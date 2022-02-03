@@ -109,21 +109,32 @@ def reset():
     DB.create_all()
     return render_template('landing.html', title='database has been reset')
 
-@APP.route('/prediction')#, methods= ["POST"])
+@APP.route('/prediction', methods= ["POST"])
 def prediction():
-    #prj_name = request.form['prj']
-    # prj_desc = request.form['blurb']
-    # prj_goal = request.form['goal']
-    # prj_category = request.form['category']
-    # prj_length = request.form['length']
-    # db_project = Project(name=prj_name,
-    #                         description=prj_desc,
-    #                         goal=prj_goal,
-    #                         category=prj_category,
-    #                         duration=prj_length)
-    # ks = create_project_df(prj_name, prj_desc, prj_goal, prj_category, prj_length)
-    # predify = model.predict(ks)
+    prj_name = request.form['prj']
+    prj_desc = request.form['blurb']
+    prj_goal = request.form['goal']
+    prj_category = request.form['category']
+    prj_length = request.form['length']
+    db_project = Project(name=prj_name,
+                         description=prj_desc,
+                         goal=prj_goal,
+                         category=prj_category,
+                         duration=prj_length)
+    ks = create_project_df(prj_name, prj_desc, prj_goal, prj_category, prj_length)
+    predify = model.predict(ks)
+    if predify == [0]:
+        pred_result = 'Fail!!'
+    if predify == [1]:
+        pred_result = 'You successful bastard' 
     # DB.session.add(db_project)
     # DB.session.commit()
-    #return render_template('prediction.html', title="Prediction")#, project=prj_name)
-    return render_template('prediction.html', title='Prediction')
+    return render_template('prediction.html',
+                           title="Prediction",
+                           prediction=pred_result)
+                        #    project=prj_name,
+                        #    prj_desc=prj_desc,
+                        #    prj_goal=prj_goal,
+                        #    prj_category=prj_category,
+                        #    prj_length=prj_length)
+    #return render_template('prediction.html', title='Prediction')

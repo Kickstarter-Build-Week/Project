@@ -1,3 +1,4 @@
+from hashlib import new
 from flask import Flask, render_template, request
 from .app_db import DB, Project
 
@@ -24,9 +25,6 @@ def flask_app():
 
         return render_template('landing.html', title='Home')
 
-    def df_creator():
-        '''creates table from inputted user data'''
-    
     # -----RESET DB------
     @APP.route('/reset')
     def reset():
@@ -36,8 +34,32 @@ def flask_app():
         DB.create_all()
 
         return render_template('landing.html', title='database has been reset')
-    
+
+    @APP.route('/project', methods= ['GET', 'POST'])
+    def update_project():
+        if request.method == 'POST':
+            prj_name = request.form['prj']
+            prj_desc = request.form['blurb']
+            prj_goal = request.form['goal']
+            prj_category = request.form['category']
+            prj_length = request.form['length']
+            db_project = Project(name=prj_name,
+                                 description=prj_desc,
+                                 goal=prj_goal,
+                                 category=prj_category,
+                                 duration=prj_length)
+            DB.session.add(db_project)
+            DB.session.commit()
+        else:
+            render_template('forms.html')
+        
+
+
     return APP
+
+
+
+
 
 def data_retrieval():
     # database objects

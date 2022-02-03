@@ -1,19 +1,29 @@
 from hashlib import new
 from flask import Flask, render_template, request
+#from .app_db import DB, Project
 from os import getenv
+<<<<<<< HEAD:appy/app.py
 from .app_db import DB, Project
 import pickle
+=======
+from flask_sqlalchemy import SQLAlchemy
+>>>>>>> parent of 66c9829 (Merge pull request #22 from Kickstarter-Build-Week/andres-flask):app.py
 
 
 # app instantiation
 APP = Flask(__name__)
 
+<<<<<<< HEAD:appy/app.py
 # Load model
 with open("xgb_class_1.pkl", "rb") as f:
     model = pickle.load(f)
     #X = df[['name_len', 'blurb_len', 'goal', 'launch_to_deadline_days', 'category']]
     #y = model.XGboost(df) # Return a 0(predicts fail) or 1(predicts successful)
 
+=======
+# app_db
+DB = SQLAlchemy()
+>>>>>>> parent of 66c9829 (Merge pull request #22 from Kickstarter-Build-Week/andres-flask):app.py
 
 # Connect our database to the app object
 DB.init_app(APP)

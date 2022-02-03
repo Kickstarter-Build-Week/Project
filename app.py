@@ -106,6 +106,7 @@ def flask_app():
     @APP.route('/project', methods= ['GET', 'POST'])
     def update_project():
         if request.method == 'POST':
+            render_template('landing.html', title='Home')
             prj_name = request.form['prj']
             prj_desc = request.form['blurb']
             prj_goal = request.form['goal']
@@ -120,7 +121,7 @@ def flask_app():
             predify = model.predict(ks)
             DB.session.add(db_project)
             DB.session.commit()
-            return redirect(url_for('prediction.html', pred=predify, project=prj_name))
+            return redirect(url_for('prediction', pred=predify, project=prj_name))
         else:
             return render_template('landing.html', title='Resubmit Project')
     @APP.route('/<project>', methods= ['GET'])       

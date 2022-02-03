@@ -126,7 +126,7 @@ def prediction():
     if predify == [0]:
         pred_result = 'a failure.'
     if predify == [1]:
-        pred_result = 'successful bastard.' 
+        pred_result = 'a successful bastard.' 
     # DB.session.add(db_project)
     # DB.session.commit()
     return render_template('prediction.html',

@@ -1,14 +1,11 @@
-from hashlib import new
 from flask import Flask, render_template, request
 from os import getenv
+from flask_sqlalchemy import SQLAlchemy
 import pickle
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
-from flask_sqlalchemy import SQLAlchemy
 
-# database instantiation
-DB = SQLAlchemy()
-
+#updated all changes to be compatible with last night's repo
 # app instantiation
 APP = Flask(__name__)
 
@@ -18,19 +15,11 @@ with open("xgb_class_1.pkl", "rb") as f:
     #X = df[['name_len', 'blurb_len', 'goal', 'launch_to_deadline_days', 'category']]
     #y = model.XGboost(df) # Return a 0(predicts fail) or 1(predicts successful)
 
+# app_db
+DB = SQLAlchemy()
 
 # Connect our database to the app object
 DB.init_app(APP)
-
-# configuring to database
-APP.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
-APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-from flask_sqlalchemy import SQLAlchemy
-
-
-
-
 
 # _______PROJECT OBJECT_________
 class Project(DB.Model):
@@ -51,6 +40,10 @@ class Project(DB.Model):
 
     def __repr__(self):
         return "<Project: {}>".format(self.name)
+
+# configuring to database
+APP.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
+APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # goal', 'name_len', 'blurb_len', 'category_academic', 'category_apps',
 #        'category_blues', 'category_comedy', 'category_experimental',
@@ -74,7 +67,7 @@ def create_project_df(name, blurb, goal, category, length):
 # this is a function to create app
 def flask_app():
     '''This app creates our application'''
-
+    # DB.init_app(APP)
 
     # -----HOME ROUTE------
     @APP.route('/')
@@ -82,6 +75,7 @@ def flask_app():
         '''Landing page to the Kickstarter Prediction project'''
         return render_template('landing.html', title='Home')
 
+    
     # -----RESET DB------
     @APP.route('/reset')
     def reset():
@@ -116,7 +110,7 @@ def flask_app():
 
     return APP
 
-
+APP = flask_app()
 
 
 def data_retrieval():

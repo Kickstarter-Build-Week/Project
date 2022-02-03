@@ -32,10 +32,10 @@ def create_project_df(name, blurb, goal, category, length):
     ks.loc[len(ks.index)] = 0
 
     # Add our variables to the dataframe
-    ks['goal'] = goal
-    ks['name_len'] = nlen
-    ks['blurb_len'] = blen
-    ks['campaign_length_days'] = length
+    ks['goal'] = int(goal)
+    ks['name_len'] = int(nlen)
+    ks['blurb_len'] = int(blen)
+    ks['campaign_length_days'] = int(length)
 
     # "OneHotEncode" our category
     for col in ks.columns:

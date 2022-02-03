@@ -8,6 +8,9 @@ Flask = "==1.1.2"
 Jinja2 = "==2.11.3"
 numpy = "==1.21"
 pandas = "==1.4.0"
+ipykernel = "*"
+xgboost = "*"
+shap = "*"
 gunicorn = "*"
 
 [dev-packages]

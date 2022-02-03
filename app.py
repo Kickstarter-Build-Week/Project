@@ -58,10 +58,38 @@ APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 def create_project_df(name, blurb, goal, category, length):
     # function to process user input and make a dataframe
-    ks = pd.DataFrame(columns = ['name', 'blurb', 'goal','category', 'length'])
+
+    # list all columns needed for model
+    cols = ['goal', 'name_len', 'blurb_len', 'category_academic',
+            'category_apps', 'category_blues', 'category_comedy', 
+            'category_experimental', 'category_festivals', 'category_flight', 
+            'category_gadgets', 'category_hardware', 'category_immersive', 
+            'category_makerspaces', 'category_musical', 'category_places', 
+            'category_plays', 'category_restaurants', 'category_robots', 
+            'category_shorts', 'category_software', 'category_sound', 
+            'category_spaces','category_thrillers', 'category_wearables', 
+            'category_web','category_webseries', 'campaign_length_days']
+
     nlen = len(name.split())
     blen = len(blurb.split())
-    ks.loc[len(ks.index)] = [nlen, blen, goal, category, length]
+    cat = "category_" + category.lower()
+
+    # Create a dataframe with 1 row with only 0's
+    ks = pd.DataFrame(columns = cols)
+    ks.loc[len(ks.index)] = 0
+
+    # Add our variables to the dataframe
+    ks['goal'] = goal
+    ks['name_len'] = nlen
+    ks['blurb_len'] = blen
+    ks['campaign_length_days'] = length
+
+    # "OneHotEncode" our category
+    for col in ks.columns:
+        if cat == col:
+            ks[col] = 1
+
+    return ks
 
 
 # this is a function to create app
@@ -100,8 +128,10 @@ def flask_app():
                                  category=prj_category,
                                  duration=prj_length)
             ks = create_project_df(prj_name, prj_desc, prj_goal, prj_category, prj_length)
+            success = model.predict(ks)
             DB.session.add(db_project)
             DB.session.commit()
+            return render_template('prediction.html', title='Prediction', message=success)
         else:
             render_template('forms.html')
             
